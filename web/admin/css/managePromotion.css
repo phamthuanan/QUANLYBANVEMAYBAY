@@ -1,0 +1,14 @@
+.inputPromotion{
+    width: 77%;
+    padding: 5px 0px 5px 10px;
+}
+.searchPromotion{
+    height: 60px;
+    background-color: #0a6b96;
+    padding: 10px 0px 10px 10px ;
+}
+
+.btnsubmitInsertPromoiton{
+    margin-top: 32px;
+    width:100%;
+}

@@ -1,0 +1,28 @@
+.Flight{
+    background-color: rgb(245, 174, 174);
+    padding: 20px;
+}
+.inforDetailFlight{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.inforDetailFlight span{
+    margin-bottom: 10px;
+}
+
+.titleFlight{
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.btn-manageFlight{
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 20px;
+}
+
+.btn-manageFlight button{
+    margin: 20px 10px 0px 0px;
+}

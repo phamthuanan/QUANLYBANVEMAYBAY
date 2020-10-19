@@ -1,0 +1,14 @@
+.pull-right{
+    float: right;
+}
+
+.pull-right i{
+    color: white;
+    margin-right: 10px;
+    font-size: 20px;
+}
+
+footer{
+    background-color: #006790;
+    padding: 20px;
+}

@@ -1,0 +1,28 @@
+.searchStatistical{
+    height: 100px;
+    background-color: #0a6b96;
+    padding: 10px 0px 10px 10px;
+}
+
+.btnSubmitStatistical{
+    margin-top: 40%;
+    width: 88%;
+}
+
+label{
+    color:white;
+}
+
+.divQuarter{
+    display: none;
+}
+
+.divMonth{
+    display: block;
+}
+
+.colSum{
+    color: rgb(199, 3, 3);
+    font-weight: bold;
+    background-color: rgb(158, 246, 158);
+}

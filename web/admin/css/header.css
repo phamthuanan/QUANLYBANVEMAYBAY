@@ -1,0 +1,23 @@
+.account-admin{
+    display: flex;
+}
+
+.avatar-account{
+    width: 40px;
+    height:40px;
+    border-radius: 100%;
+}
+.dropdown a.nameaccount:hover{
+    color: white;
+}
+.nameaccount{
+    color: white;
+}
+
+.logo{
+    height: 50px;
+}
+
+.header-bar{
+    background-color: #006790;
+}

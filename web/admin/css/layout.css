@@ -1,0 +1,19 @@
+
+.body-content{
+    display: flex;
+}
+
+.main-sidebar{
+    width: 20%;
+}
+
+.content-wrapper{
+    width: 80%;
+}
+
+/* hover box-menu
+*/
+
+.overlay{
+    width: 100;
+}

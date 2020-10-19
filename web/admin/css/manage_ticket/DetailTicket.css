@@ -1,0 +1,64 @@
+
+.ticket{
+    padding: 20px;
+    border-radius: 10px;
+    position: relative;
+    background-color: rgb(241, 239, 239);
+    margin: 0px 30px;
+}
+
+.btn-manageTicket{
+    display: flex;
+    justify-content: flex-end;
+    margin: 20px 38px 20px 0px;
+}
+
+
+.headerticket{
+    background-color: #006790;
+    border-radius: 15px 15px 0 0;
+    width: 100%;
+    height: 70px;
+    top:0;
+    left:0;
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 30px;
+    padding: 0px 50px;
+}
+
+.footerticket{
+    background-color: #006790;
+    border-radius: 0px 0px 15px 15px;
+    width: 100%;
+    height: 50px;
+    bottom: 0;
+    left:0;
+    position: absolute;
+}
+.bodyticket{
+    margin: 70px 0px 50px 0px;
+}
+
+.componentItem{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+
+.titleNameItem{
+    font-size: 11px;
+    color: rgb(42, 41, 41);
+}
+
+.contentItem{
+    font-weight: bold;
+}
+.hourtakeoff,.numberSit{
+    font-size: 40px;
+}
+.detailContentBody{
+    padding: 0px 50px;
+}

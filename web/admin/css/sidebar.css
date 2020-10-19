@@ -1,0 +1,111 @@
+.main-sidebar{
+    background-color: #1a2226;
+    color: #b8c7ce;
+}
+
+.avavatar-user{
+    width:50px;
+    height: 50px;
+}
+.user-panel{
+    display: flex;
+    padding : 10px;
+}
+
+.fa-circle{
+    color: green;
+}
+.infor-account{
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+}
+.state-user{
+    font-size: 11px;
+}
+
+.menu-sidebar, .sub-menu{
+    list-style-type: none;
+    padding-left: 0px
+}
+
+.menu-sidebar li{
+    padding: 0px 0px 20px 10px;
+}
+.sub-menu li{
+    padding : 10px 0px;
+}
+
+.fa-angle-left{
+    margin-right: 10px;
+    float: right;
+}
+
+.title-menu{
+    color: rgb(187, 180, 180);
+    background-color: black;
+    font-size: 13px;
+    padding: 10px 0px !important;
+    margin-bottom: 20px;
+}
+
+.sub-menu a{
+    color: #b8c7ce;
+    text-decoration: none;
+}
+/*CSS phần nội dung trong trang chủ admin*/
+.box-menu{
+    text-align: center;
+    padding: 50px 10px;
+    margin: 0px 50px;
+    margin-bottom: 30px;
+    border-radius: 10px;
+    position: relative;
+}
+.box-menu a{
+    color:white;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.submenubar:hover{
+    background-color: black;
+}
+
+.submenubar div a{
+    text-decoration: none;
+    color:#b8c7ce;
+}
+
+.box-menu.bg-light a{
+    color: black !important;
+}
+
+
+.box-menu:hover{
+    opacity: 0.5;
+}
+
+.listitemmanageCustomer{
+    padding: 0;
+
+}
+.listitemmanageCustomer li{
+    padding: 10px;
+    margin-top: 10px;
+}
+.listitemmanageCustomer li:hover{
+    background-color: #1a2226;
+}
+
+.listitemmanageCustomer a{
+    color: #b8c7ce;
+    text-decoration: none;
+    
+}
+
+.fa-chevron-down{
+    float:right;
+    margin-right: 10px;
+    margin-top: 5px;
+}

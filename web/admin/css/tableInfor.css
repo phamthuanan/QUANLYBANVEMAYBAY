@@ -1,0 +1,53 @@
+input {
+    border: none;
+}
+
+.tableDetail{
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+  
+  td, th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+  }
+  
+  th{
+      background-color: #d3bbbb;
+  }
+
+
+
+  .menuConfig{
+    right: 0px !important;
+    left: -100% !important;
+  }
+
+  .btnSubmitSave{
+      display: none;
+  }
+
+  .btnSave{
+      width: 100%;
+  }
+
+  .inputrow:disabled,.selectOptionRow:disabled{
+      background-color: #ffffff !important;
+      border: none;
+  }
+
+  .inputrow, .selectOptionRow{
+      border: none !important;
+      display: none;
+  }
+
+  .selectOptionRow{
+      color:black !important;
+  }
+
+  .btnEdit{
+      border: none;
+  }

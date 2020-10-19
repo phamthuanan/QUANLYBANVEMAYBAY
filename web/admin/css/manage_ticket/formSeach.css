@@ -1,0 +1,25 @@
+.formsearchticket{
+    height: 55px;
+    background-color: #0a6b96;
+    padding: 10px 0px 10px 10px ;
+}
+
+.nameCustomer, .dateTackeOff, .placeFrom, .placeTo{
+    padding: 5px 0px 5px 10px;
+    border-radius: 6px;
+    border: none;
+    margin-right:10px;
+}
+
+.nameCustomer{
+    width:35%;
+}
+
+.dateTackeOff{
+    width: 18%;
+}
+
+.placeFrom, .placeTo{
+    width: 15%;
+}
+
