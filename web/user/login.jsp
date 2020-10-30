@@ -136,7 +136,7 @@
                             </div>
                             <div class="row">
                                 <div style="float: left;padding-left: 20px;">
-                                    <button type="submit" name="Save" class="book-btn">Đăng nhập</button>
+                                    <button type="submit" onclick="window.location.href='profile_user.jsp'" name="Save" class="book-btn">Đăng nhập</button>
                                 </div>
                                 <div class="col-md-8" style="display: flex !important; padding: 10px 20px;margin-left: 55px;">
                                     <span class="el-sub" style="padding: 0 5px;">Chưa có tài khoản?</span>
