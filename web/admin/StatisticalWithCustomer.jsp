@@ -1,7 +1,7 @@
 <%-- 
     Document   : Statistical
     Created on : Oct 19, 2020, 10:58:52 PM
-    Author     : Pham An
+    Author     : TRAN TIEN ANH
 --%>
 
 <%@page import="java.util.ArrayList"%>
@@ -27,7 +27,7 @@
     <link rel="stylesheet" href="./css/tableInfor.css">
     <link rel="stylesheet" href="./css/breadcrumb.css">
     <link rel="stylesheet" href="./css/Statistical.css">
-    <title>Quản lý khuyến mãi</title>
+    <title>THONG KE</title>
   </head>
   <body>
        <%
@@ -60,7 +60,7 @@
                                         <div class="form-row">
                                             <div class="col-5 form-group">
                                                 <label for="statistical">Thống kê</label>
-                                                <select name="statistical"  class="statistical form-control">
+                                                <select name="statistical" id="statistical" class="statistical form-control">
                                                     <option value="0">Chọn thống kê</option>
                                                     <option value="1">Thống kê doanh số bán vé</option>
                                                     <option value="2">Thống kê danh sách khách hàng mua vé</option>
@@ -68,7 +68,7 @@
                                             </div>
                                             <div class="col-3 form-group">
                                                 <label for="TypeStatistical">Loại thống kê</label>
-                                                <select name="TypeStatistical"  class="TypeStatistical form-control">
+                                                <select name="TypeStatistical" id="TypeStatistical" class="TypeStatistical form-control">
                                                     <option value="Tháng" selected >Tháng</option>
                                                     <option value="Qúy">Qúy</option>
                                                     <option value="Năm">Năm</option>
@@ -76,7 +76,7 @@
                                             </div>
                                             <div class="col-2 form-group" id="divMonth">
                                                 <label for="month">Tháng</label>
-                                                <select name="month"  class="month form-control">
+                                                <select name="month" id="month" class="month form-control">
                                                     <option value="1" selected>1</option>
                                                     <option value="2">2</option>
                                                     <option value="3">3</option>
@@ -93,7 +93,7 @@
                                             </div>
                                             <div class="col-2 form-group divQuarter" id="divQuarter">
                                                 <label for="quarter">Qúy</label>
-                                                <select name="quarter"  class="quarter form-control">
+                                                <select name="quarter" id="quarter" class="quarter form-control">
                                                     <option value="1" selected>1</option>
                                                     <option value="2">2</option>
                                                     <option value="3">3</option>
@@ -141,7 +141,7 @@
                                    
                                     <%}%>
                                      <tr class="colSum">
-                                        <td colspan="1" >Tổng  :  <%=(int)sDao.getSum()%></td>
+                                        <td colspan="1" >Tổng  :  <%=(int)sDao.getSumByCustomer()%></td>
                                
                                     </tr>
                                 </table>

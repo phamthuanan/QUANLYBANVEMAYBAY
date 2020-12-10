@@ -4,9 +4,73 @@
         <servlet-name>LoginServlet</servlet-name>
         <servlet-class>controller.LoginServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>LogoutAccountServlet</servlet-name>
+        <servlet-class>controller.LogoutAccountServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ManageTicketServlet</servlet-name>
+        <servlet-class>controller.ManageTicketServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ManageCustomerServlet</servlet-name>
+        <servlet-class>controller.ManageCustomerServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ManageAccountServlet</servlet-name>
+        <servlet-class>controller.ManageAccountServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ManagePlaneServlet</servlet-name>
+        <servlet-class>controller.ManagePlaneServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ManagePromotionServlet</servlet-name>
+        <servlet-class>controller.ManagePromotionServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ManageFlightServlet</servlet-name>
+        <servlet-class>controller.ManageFlightServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ManageStatisticalServlet</servlet-name>
+        <servlet-class>controller.ManageStatisticalServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/LoginServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LogoutAccountServlet</servlet-name>
+        <url-pattern>/LogoutAccountServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ManageTicketServlet</servlet-name>
+        <url-pattern>/ManageTicketServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ManageCustomerServlet</servlet-name>
+        <url-pattern>/ManageCustomerServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ManageAccountServlet</servlet-name>
+        <url-pattern>/ManageAccountServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ManagePlaneServlet</servlet-name>
+        <url-pattern>/ManagePlaneServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ManagePromotionServlet</servlet-name>
+        <url-pattern>/ManagePromotionServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ManageFlightServlet</servlet-name>
+        <url-pattern>/ManageFlightServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ManageStatisticalServlet</servlet-name>
+        <url-pattern>/ManageStatisticalServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

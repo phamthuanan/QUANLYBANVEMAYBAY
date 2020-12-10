@@ -1,7 +1,7 @@
 <%-- 
-    Document   : ManageCustomer
-    Created on : Oct 19, 2020, 10:13:50 PM
-    Author     : Pham An
+    Document   : resultCustomerSearch
+    Created on : Dec 2, 2020, 10:04:30 PM
+    Author     : TRAN TIEN ANH
 --%>
 
 <%@page import="model.Customer"%>
@@ -31,7 +31,11 @@
   <body>
       <%
            CustomerDao cDao = new CustomerDao();
-            ArrayList<Customer> list = cDao.getListCustomer();
+            String search = "";
+            if (request.getParameter("searchCustomer") != null) {
+            search = request.getParameter("searchCustomer");
+         }
+            
       %>
     <div class="swapper">
         <jsp:include page="Header.jsp"></jsp:include>
@@ -44,7 +48,7 @@
                         <ol class="breadcrumb">
                           <li class="breadcrumb-item" aria-current="page"><a href="index.jsp"><i class="fas fa-home"></i> Trang chủ</a></li>
                           <li class="breadcrumb-item active" aria-current="page"><a href="ManageCustomer.jsp">Quản lý khách hàng</a></li>
-                         
+                    
                         </ol>
                     </nav>
                 </section>
@@ -53,96 +57,72 @@
                      <div class="container">
                         <div class="row">
                             <div class="col-12">
-                                <div class="searchCustomer">
-                                    <form action="/QUANLYBANVEMAYBAY/ManageCustomerServlet" method="POST">
-                                        
-                                        <input type="text" placeholder="Tìm khách hàng" name="searchCustomer" class="inforCustomer">
-                                        <button type="submit" name="command" value="search" class="btnSubmit btn btn-danger"><i class="fas fa-search"></i> Tìm kiếm</button>
-                                    </form>
-                                </div>
+                            
+                                    <div class="col-sm-5">
+					<div>
+                                            <h3>Kết quả tìm kiếm cho khách hàng <h3 style="color: red"><%=search%></h3></h3>
+						
+					</div>
+                                    </div>
+
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-12">
                                 <table class="tableDetail">
-                                    <tr >
-                                   
+                                    <%
+                                        if(cDao.getListCustomer(search) != null) {
+                 
+                                           for(Customer c: cDao.getListCustomer(search)){
+                                                
+                                    %>
+                                    <tr>
+                                        
                                         <th>Mã khách hàng</th>
                                         <th>Tên khách hàng</th>
-                                         <th>Email</th>
-                                         <th>Địa chỉ</th>
                                         <th>Số điện thoại</th>
-                                        <th>Loại KH</th>
+                                        <th>Email</th>
+                                        <th>Địa chỉ</th>
                                         <th>Tên tài khoản</th>
-                                        <th>Điểm</th>
                                         <th>Thao tác</th>
-                                   
                                     </tr>
                                     <tr>
-                                       <%
-                                            
-                                            for(Customer c : list){
-                                        %>
-                                            
+                                      
                                             <td><%=c.getMakh()%></td>
                                             <td>
                                                 <%=c.getHoten()%>
                                             </td>
                                             <td>
+                                                <%=c.getSdt()%>
+                                            </td>
+                                            <td>
                                                 <%=c.getEmail()%>
                                             </td>
-                                             <td>
+                                            <td>
                                                 <%=c.getDiachi()%>
                                             </td>
                                             <td>
-                                                <%=c.getSdt()%>
-                                            </td>
-                                             <td>
-                                                <%=c.getLoaikh()%>
-                                            <td>
-                                           
                                                 <%=c.getUsername()%>
                                             </td>
-                                             <td>
-                                                <%=c.getDiem()%>
-                                            </td>
-                                           
-                                            <td style="border: 2px solid #dcdcdc;vertical-align: top;" >
+                                            <td style="border: 2px solid #dcdcdc;vertical-align: top;" width="115px">
                                                 <center>
                                                     <a style="color: #ff66cc;font-weight:  bold;" href="/QUANLYBANVEMAYBAY/admin/updateCustomer.jsp?makh=<%=c.getMakh()%>&command=update">
                                                         Sửa
                                                     </a>&nbsp;| &nbsp;
-                                                    <a style="color: #ff66cc;font-weight:  bold;"  onclick="return confirm('Bạn chắc chắn muốn xóa thông tin này!')" href="/QUANLYBANVEMAYBAY/ManageCustomerServlet?makh=<%=c.getMakh()%>&command=delete">
-                                                        <!--onclick="return confirm('Bạn chắc chắn muốn xóa thông tin khách hàng này!')"-->
+                                                    <a style="color: #ff66cc;font-weight:  bold;"  href="/QUANLYBANVEMAYBAY/ManageCustomerServlet?makh=<%=c.getMakh()%>&command=delete">
+                                                     
                                                         Xóa
                                                     </a>
                                                 </center>
                                             </td>
-<!--                                            <td>
-                                                <div class="btnSubmitSave" id="btnSubmitSave">
-                                                    <button type="submit" class="btnSave btn btn-primary" id="btnSave">Lưu</button>
-                                                </div>
-                                          
-                                                <div class="dropdown dropdownMenuRowTable">
-                                                    <div ss="fas fa-cog"></i>
-                                                    </div>
-                                                    <div class="dropdown-menu menuConfig" aria-labellclass="dropdown-toggle" id="dropdownManageDetailTicket" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                        <i class="fas fa-cog"></i>
-                                                    </div>
-                                                    <div class="dropdown-menu menuConfig" aria-labelledby="dropdownManageDetailTicket">
-                                                                                             
-                                                    <button class="dropdown-item btnEdit" type="button">Sửa</button>
-                                                    <form action="#" method="POST">
-                                                        <button class="dropdown-item" type="submit" onclick="return confirm('Bạn chắc chắn muốn xóa thông tin khách hàng này!')">Xóa</button>
-                                                    </form>
-                                                </div>
-                                    
-                                            </td>-->
                                         
                                     </tr>
-                                    <%        
-                                        }
+                                    <%   
+                                       }
+                                        } else { 
                                     %>
+                                    <h2 style="text-align: center; color: blue">Không tìm thấy kết quả nào</h2>
+                                    <%}%>
                                 </table>
                             </div>
                         </div>

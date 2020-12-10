@@ -11,7 +11,7 @@
         <aside class="main-sidebar">
                 <section class="sidebar">
                     <!-- Sidebar user panel -->
-                    <div class="user-panel">
+<!--                    <div class="user-panel">
                         <div class="avatar-user">
                             <img src="./images/IMG.jpg" alt="avavter" class="avavatar-user">
                         </div>
@@ -19,7 +19,7 @@
                             <span class="name-user">Phạm Thuận An</span>
                             <span class='state-user'><i class="fas fa-circle"></i> Online</span>
                         </div>
-                    </div>
+                    </div>-->
                     <!-- sidebar menu: : style can be found in sidebar.less -->
                     <ul class="menu-sidebar">
                         <li class="title-menu">DANH MỤC</li>
@@ -30,15 +30,10 @@
                             </div>
                         </li>
                         <li class="submenubar">
-                            <div data-toggle="collapse" href="#collapseCustomner" role="button" aria-expanded="false" aria-controls="collapseCustomner">
-                                <i class="fas fa-user"></i>
-                                <a href="#" >QUẢN LÝ KHÁCH HÀNG </a>
-                                <i class="fas fa-chevron-down"></i>
+                           <div>
+                                <i class="fas fa-ticket-alt"></i>
+                                <a href="ManageCustomer.jsp" class="submenubar">QUẢN LÝ KHÁCH HÀNG</a>
                             </div>
-                            <ul class="collapse listitemmanageCustomer" id="collapseCustomner">
-                               <a href="ManageCustomer.jsp"><li><i class="far fa-circle"></i> Quản lý thông tin khách hàng</li></a>
-                               <a href="ManageAccount.jsp"><li><i class="far fa-circle"></i> Quản lý tài khoản</li></a>
-                            </ul>
                         </li>
                         <li class="submenubar">
                             <div>
@@ -64,6 +59,13 @@
                                 <a href="Statistical.jsp">THỐNG KÊ</a>
                             </div>
                         </li>
+                        
+                         <li style="height: 270px">
+                            <div>
+                               
+                            </div>
+                        </li>
+                       
                     </ul>
                 </section>
             </aside>

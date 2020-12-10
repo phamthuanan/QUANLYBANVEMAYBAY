@@ -4,6 +4,9 @@
     Author     : Pham An
 --%>
 
+<%@page import="java.util.ArrayList"%>
+<%@page import="dao.TicketDao"%>
+<%@page import="dao.FlightDao"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!doctype html>
 <html lang="en">
@@ -26,6 +29,14 @@
     <title>Quản lý vé</title>
   </head>
   <body>
+       <% 
+     
+       TicketDao tDao = new TicketDao();
+       
+    
+        ArrayList list1 = tDao.getAllTicket();
+    
+         %>
     <div class="swapper">
         <jsp:include page="Header.jsp"></jsp:include>
         <div class="body-content">
@@ -36,7 +47,7 @@
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                           <li class="breadcrumb-item" aria-current="page"><a href="index.jsp"><i class="fas fa-home"></i> Trang chủ</a></li>
-                          <li class="breadcrumb-item active" aria-current="page">Quản lý vé</li>
+                          <li class="breadcrumb-item active" aria-current="page"><a href="ManageTicket.jsp">Quản lý vé</a></li>
                         </ol>
                     </nav>
                 </section>
@@ -46,60 +57,221 @@
                         <div class="row">
                             <div class="col-12">
                                  <div class="formsearchticket">
-                                    <form action="#" method="POST">
-                                        <input type="text" placeholder="Tên khách hàng" name="nameCustomer" id="nameCustomer" class="nameCustomer" >
-                                        <input type="date" name="dateTakeOff" id="dateTakeOff" class="dateTackeOff">
-                                        <select name="placeFrom" id="placeFrom" class="placeFrom">
+                                    <form action="/QUANLYBANVEMAYBAY/ManageTicketServlet" method="POST">
+                                        <input type="text" placeholder="Tên khách hàng" name="nameCustomer"  class="nameCustomer" >
+                                        <select name="placeFrom" class="placeFrom">
                                             <option value="">Nơi đi</option>
-                                            <option value="Hồ Chí Minh">Hồ Chí Minh</option>
+                                            <option value="An Giang">An Giang
+                                            <option value="Bà Rịa - Vũng Tàu">Bà Rịa - Vũng Tàu
+                                            <option value="Bắc Giang">Bắc Giang
+                                            <option value="Bắc Kạn">Bắc Kạn
+                                            <option value="Bạc Liêu">Bạc Liêu
+                                            <option value="Bắc Ninh">Bắc Ninh
+                                            <option value="Bến Tre">Bến Tre
+                                            <option value="Bình Định">Bình Định
+                                            <option value="Bình Dương">Bình Dương
+                                            <option value="Bình Phước">Bình Phước
+                                            <option value="Bình Thuận">Bình Thuận
+                                            <option value="Bình Thuận">Bình Thuận
+                                            <option value="Cà Mau">Cà Mau
+                                            <option value="Cao Bằng">Cao Bằng
+                                            <option value="Đắk Lắk">Đắk Lắk
+                                            <option value="Đắk Nông">Đắk Nông
+                                            <option value="Điện Biên">Điện Biên
+                                            <option value="Đồng Nai">Đồng Nai
+                                            <option value="Đồng Tháp">Đồng Tháp
+                                            <option value="Đồng Tháp">Đồng Tháp
+                                            <option value="Gia Lai">Gia Lai
+                                            <option value="Hà Giang">Hà Giang
+                                            <option value="Hà Nam">Hà Nam
+                                            <option value="Hà Tĩnh">Hà Tĩnh
+                                            <option value="Hải Dương">Hải Dương
+                                            <option value="Hậu Giang">Hậu Giang
+                                            <option value="Hòa Bình">Hòa Bình
+                                            <option value="Hưng Yên">Hưng Yên
+                                            <option value="Khánh Hòa">Khánh Hòa
+                                            <option value="Kiên Giang">Kiên Giang
+                                            <option value="Kon Tum">Kon Tum
+                                            <option value="Lai Châu">Lai Châu
+                                            <option value="Lâm Đồng">Lâm Đồng
+                                            <option value="Lạng Sơn">Lạng Sơn
+                                            <option value="Lào Cai">Lào Cai
+                                            <option value="Long An">Long An
+                                            <option value="Nam Định">Nam Định
+                                            <option value="Nghệ An">Nghệ An
+                                            <option value="Ninh Bình">Ninh Bình
+                                            <option value="Ninh Thuận">Ninh Thuận
+                                            <option value="Phú Thọ">Phú Thọ
+                                            <option value="Quảng Bình">Quảng Bình
+                                            <option value="Quảng Bình">Quảng Bình
+                                            <option value="Quảng Ngãi">Quảng Ngãi
+                                            <option value="Quảng Ninh">Quảng Ninh
+                                            <option value="Quảng Trị">Quảng Trị
+                                            <option value="Sóc Trăng">Sóc Trăng
+                                            <option value="Sơn La">Sơn La
+                                            <option value="Tây Ninh">Tây Ninh
+                                            <option value="Thái Bình">Thái Bình
+                                            <option value="Thái Nguyên">Thái Nguyên
+                                            <option value="Thanh Hóa">Thanh Hóa
+                                            <option value="Thừa Thiên Huế">Thừa Thiên Huế
+                                            <option value="Tiền Giang">Tiền Giang
+                                            <option value="Trà Vinh">Trà Vinh
+                                            <option value="Tuyên Quang">Tuyên Quang
+                                            <option value="Vĩnh Long">Vĩnh Long
+                                            <option value="Vĩnh Phúc">Vĩnh Phúc
+                                            <option value="Yên Bái">Yên Bái
+                                            <option value="Phú Yên">Phú Yên
+                                            <option value="Cần Thơ">Cần Thơ
+                                            <option value="Đà Nẵng">Đà Nẵng
+                                            <option value="Hải Phòng">Hải Phòng
+                                            <option value="Hà Nội">Hà Nội
+                                            <option value="Hồ Chí Minh">Hồ Chí Minh
                                         </select>
-                                        <select name="placeTo" id="placeTo" class="placeTo">
+                                        <select name="placeTo" class="placeTo">
                                             <option value="">Nơi đến</option>
-                                            <option value="Hà Nội">Hà Nội</option>
+                                            <option value="An Giang">An Giang
+                                            <option value="Bà Rịa - Vũng Tàu">Bà Rịa - Vũng Tàu
+                                            <option value="Bắc Giang">Bắc Giang
+                                            <option value="Bắc Kạn">Bắc Kạn
+                                            <option value="Bạc Liêu">Bạc Liêu
+                                            <option value="Bắc Ninh">Bắc Ninh
+                                            <option value="Bến Tre">Bến Tre
+                                            <option value="Bình Định">Bình Định
+                                            <option value="Bình Dương">Bình Dương
+                                            <option value="Bình Phước">Bình Phước
+                                            <option value="Bình Thuận">Bình Thuận
+                                            <option value="Bình Thuận">Bình Thuận
+                                            <option value="Cà Mau">Cà Mau
+                                            <option value="Cao Bằng">Cao Bằng
+                                            <option value="Đắk Lắk">Đắk Lắk
+                                            <option value="Đắk Nông">Đắk Nông
+                                            <option value="Điện Biên">Điện Biên
+                                            <option value="Đồng Nai">Đồng Nai
+                                            <option value="Đồng Tháp">Đồng Tháp
+                                            <option value="Đồng Tháp">Đồng Tháp
+                                            <option value="Gia Lai">Gia Lai
+                                            <option value="Hà Giang">Hà Giang
+                                            <option value="Hà Nam">Hà Nam
+                                            <option value="Hà Tĩnh">Hà Tĩnh
+                                            <option value="Hải Dương">Hải Dương
+                                            <option value="Hậu Giang">Hậu Giang
+                                            <option value="Hòa Bình">Hòa Bình
+                                            <option value="Hưng Yên">Hưng Yên
+                                            <option value="Khánh Hòa">Khánh Hòa
+                                            <option value="Kiên Giang">Kiên Giang
+                                            <option value="Kon Tum">Kon Tum
+                                            <option value="Lai Châu">Lai Châu
+                                            <option value="Lâm Đồng">Lâm Đồng
+                                            <option value="Lạng Sơn">Lạng Sơn
+                                            <option value="Lào Cai">Lào Cai
+                                            <option value="Long An">Long An
+                                            <option value="Nam Định">Nam Định
+                                            <option value="Nghệ An">Nghệ An
+                                            <option value="Ninh Bình">Ninh Bình
+                                            <option value="Ninh Thuận">Ninh Thuận
+                                            <option value="Phú Thọ">Phú Thọ
+                                            <option value="Quảng Bình">Quảng Bình
+                                            <option value="Quảng Bình">Quảng Bình
+                                            <option value="Quảng Ngãi">Quảng Ngãi
+                                            <option value="Quảng Ninh">Quảng Ninh
+                                            <option value="Quảng Trị">Quảng Trị
+                                            <option value="Sóc Trăng">Sóc Trăng
+                                            <option value="Sơn La">Sơn La
+                                            <option value="Tây Ninh">Tây Ninh
+                                            <option value="Thái Bình">Thái Bình
+                                            <option value="Thái Nguyên">Thái Nguyên
+                                            <option value="Thanh Hóa">Thanh Hóa
+                                            <option value="Thừa Thiên Huế">Thừa Thiên Huế
+                                            <option value="Tiền Giang">Tiền Giang
+                                            <option value="Trà Vinh">Trà Vinh
+                                            <option value="Tuyên Quang">Tuyên Quang
+                                            <option value="Vĩnh Long">Vĩnh Long
+                                            <option value="Vĩnh Phúc">Vĩnh Phúc
+                                            <option value="Yên Bái">Yên Bái
+                                            <option value="Phú Yên">Phú Yên
+                                            <option value="Cần Thơ">Cần Thơ
+                                            <option value="Đà Nẵng">Đà Nẵng
+                                            <option value="Hải Phòng">Hải Phòng
+                                            <option value="Hà Nội">Hà Nội
+                                            <option value="Hồ Chí Minh">Hồ Chí Minh
                                         </select>
-                                        <button type="submit" class="btnSubmit btn btn-danger"><i class="fas fa-search"></i> Tìm kiếm</button>
+                                        <button type="submit" value="search" name="command" class="btnSubmit btn btn-danger"><i class="fas fa-search"></i> Tìm kiếm</button>
                                     </form>
                                 </div>
                             </div>
                         </div>
+                       
                         <div class="row">
                                 <div class="col-12">
                                     <table class="tableDetail">
+                                        
                                         <tr>
-                                        <th><input type="checkbox"></th>
+
                                         <th>Mã vé</th>
-                                        <th>Tên khách hàng</th>
-                                        <th>Ngày đi</th>
+                                        <th>Số ghế</th>
+                                        <th>Hãng MB</th>
+                                        <th>Tên KH</th>
                                         <th>Từ</th>
                                         <th>Đến</th>
-                                        <th>Hãng máy bay</th>
-                                        <th>Số ghế</th>
-                                        <th>Trạng thái</th>
-                                        <th><i class="fas fa-cog"></i></th>
+                                        <th>Ngày đi</th>
+                                        <th>Ngày đến</th>
+                                        
+                                        <th>Thao tác</th>
+
                                         </tr>
+                                         <%
+
+                                             if(list1 != null)        {                                           
+                                         %>
                                         <tr>
-                                        <td><input type="checkbox" name="" id=""></td>
-                                        <td>00001</td>
-                                        <td>Nguyễn Văn A</td>
-                                        <td>1/10/2020</td>
-                                        <td>Hồ Chí Minh</td>
-                                        <td>Đà Nẵng</td>
-                                        <td>Viet Nam Airline</td>
-                                        <td>A20</td>
-                                        <td>Giữ chỗ</td>
-                                        <td>
-                                            <div class="dropdown">
-                                                <div class="dropdown-toggle" id="dropdownManageDetailTicket" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                    <i class="fas fa-cog"></i>
-                                                </div>
-                                                <div class="dropdown-menu menuConfig" aria-labelledby="dropdownManageDetailTicket">
-                                                  <a class="dropdown-item" href="DetailTicket.jsp">Xem</a>
-                                                  
-                                                </div>
-                                              </div>
+                                             <td><%=list1.get(8)%></td>
+                                        <td><%=list1.get(9)%></td>
+                                        <td><%=list1.get(10)%></td>
+                                        <td><%=list1.get(11)%></td>
+                                        <td><%=list1.get(12)%></td>
+                                        <td><%=list1.get(13)%></td>
+                                        <td><%=list1.get(14)%></td>
+                                        <td><%=list1.get(15)%></td>
+                                        
+                                        
+                                        
+                                        
+                                         <td style="border: 2px solid #dcdcdc;vertical-align: top;">
+                                            <center>
+                                                <a style="color: #ff66cc;font-weight:  bold;" href="/QUANLYBANVEMAYBAY/admin/updateTicket.jsp?mave=command=update">
+                                                    Sửa
+                                                </a>&nbsp;| &nbsp;
+                                                <a style="color: #ff66cc;font-weight:  bold;"  onclick="return confirm('Bạn chắc chắn muốn xóa thông tin này!')" href="/QUANLYBANVEMAYBAY/ManageTicketServlet?mave=&command=delete">
+                                                    Xóa
+                                                </a>
+                                            </center>
                                         </td>
                                         </tr>
-                                    
+                                        <tr>
+                                            
+                                       <td><%=list1.get(0)%></td>
+                                        <td><%=list1.get(1)%></td>
+                                        <td><%=list1.get(2)%></td>
+                                        <td><%=list1.get(3)%></td>
+                                        <td><%=list1.get(4)%></td>
+                                        <td><%=list1.get(5)%></td>
+                                        <td><%=list1.get(6)%></td>
+                                        <td><%=list1.get(7)%></td>
+                                       
+                                        
+                                        
+                                         <td style="border: 2px solid #dcdcdc;vertical-align: top;" >
+                                            <center>
+                                                <a style="color: #ff66cc;font-weight:  bold;" href="/QUANLYBANVEMAYBAY/admin/updateTicket.jsp?mave=command=update">
+                                                    Sửa
+                                                </a>&nbsp;| &nbsp;
+                                                <a style="color: #ff66cc;font-weight:  bold;" href="/QUANLYBANVEMAYBAY/ManageTicketServlet?mave=&command=delete">
+                                                    Xóa
+                                                </a>
+                                            </center>
+                                        </td>
+                                        </tr>
+                                     <%}%>
                                     </table>
                                 </div>
                         </div>

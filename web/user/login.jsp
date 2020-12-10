@@ -118,12 +118,12 @@
             <div class="container">
                 <div class="row">
                     <div class="col-sm-6" style="margin-left: 25%">
-                        <form class="auth__form" method="post" action="">
+                        <form class="auth__form" method="POST" action="/QUANLYBANVEMAYBAY/ManageAccountServlet">
                             <div class="form-group no-wrap">
                                 <label for="email" >Địa chỉ email</label>
                                 <div class="auth__form--inline">
                                    
-                                    <input type="text" required="" class="form-control" id="email" placeholder="Email" name="UsernameOrEmail">
+                                    <input type="text" required="" class="form-control" placeholder="Email" name="UsernameOrEmail">
                                 </div>
                             </div>
                             <br>
@@ -131,12 +131,12 @@
                                 <label for="password">Mật khẩu</label>
                                 <div class="auth__form--inline">
                                     
-                                    <input type="password" required="" class="form-control" id="password" placeholder="Mật khẩu" name="Password">
+                                    <input type="password" required="" class="form-control"  placeholder="Mật khẩu" name="Password">
                                 </div>
                             </div>
                             <div class="row">
                                 <div style="float: left;padding-left: 20px;">
-                                    <button type="submit" onclick="window.location.href='profile_user.jsp'" name="Save" class="book-btn">Đăng nhập</button>
+                                    <button type="submit" value="login" name="command" class="book-btn">Đăng nhập</button> 
                                 </div>
                                 <div class="col-md-8" style="display: flex !important; padding: 10px 20px;margin-left: 55px;">
                                     <span class="el-sub" style="padding: 0 5px;">Chưa có tài khoản?</span>

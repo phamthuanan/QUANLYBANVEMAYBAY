@@ -4,6 +4,9 @@
     Author     : Pham An
 --%>
 
+<%@page import="model.Plane"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="dao.PlaneDao"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!doctype html>
 <html lang="en">
@@ -27,6 +30,10 @@
     <title>Quản lý máy bay</title>
   </head>
   <body>
+       <%
+           PlaneDao pDao = new PlaneDao();
+            ArrayList<Plane> list = pDao.getListPlane();
+      %>
     <div class="swapper">
         <jsp:include page="Header.jsp"></jsp:include>
         <div class="body-content">
@@ -47,53 +54,49 @@
                         <div class="row">
                             <div class="col-12">
                                 <div class="searchPlane">
-                                    <form action="#" method="Post">
+                                    <form action="/QUANLYBANVEMAYBAY/ManagePlaneServlet" method="Post">
                                         <button class="btn btn-success" id="btnInsert" type="button"><i class="fas fa-plus-circle"></i> Thêm mới</button>
-                                        <input type="text" placeholder="Tìm hãng máy bay" name="inputPlane" class="inputPlane">
-                                        <button type="submit" class="btnSubmit btn btn-danger"><i class="fas fa-search"></i> Tìm kiếm</button>
+                                        <input type="text" placeholder="Tìm máy bay" name="inputPlane" class="inputPlane">
+                                        <button type="submit" name="command" value="search" class="btnSubmit btn btn-danger"><i class="fas fa-search"></i> Tìm kiếm</button>
                                     </form>
                                 </div>
                             </div>
                         </div>
-                        <form action="#" method="POST" class="formInsert needs-validation" id="formInsert" novalidate>
+                        <form action="/QUANLYBANVEMAYBAY/ManagePlaneServlet" method="POST" class="formInsert needs-validation" id="formInsert" novalidate>
                             <div class="form-row">
                                 <div class="col-12 titleForm">
                                     <h3>Thêm thông tin máy bay</h3>
                                     <div class="btnclose" id="btnclose"><i class="fas fa-angle-up"></i></div>
                                 </div>
+                                
                                 <div class="col-3 form-group">
-                                  <label for="id_plane">Mã máy bay</label>
-                                  <input type="text" id="id_plane" class="idPlane form-control" placeholder="Nhập mã máy bay" required>
-                                  <div class="invalid-feedback">
-                                    Vui lòng nhập mã máy bay
-                                  </div>
-                                </div>
-                                <div class="col-3 form-group">
-                                    <label for="name_plane">Tên máy bay</label>
-                                    <input type="text" id="name_plane" class="namePlane form-control" placeholder="Nhập tên máy bay" required>
+                                    <label for="temb">Tên máy bay</label>
+                                    <input type="text" name="tenmb" class="namePlane form-control" placeholder="Nhập tên máy bay" required>
                                     <div class="invalid-feedback">
                                         Vui lòng nhập tên máy bay
                                     </div>
                                 </div>
                                 <div class="col-4 form-group">
-                                    <label for="airline">Hãng máy bay</label>
-                                    <select name="airline" id="airline" class="airline custom-select" required>
+                                    <label for="hangmb">Hãng máy bay</label>
+                                    <select name="hangmb"  class="airline custom-select" required>
                                         <option value="">Hãng máy bay</option>
-                                        <option value="VietNameAirLine">VietNameAirLine</option>
+                                        <option value="VietNameAirline">VietNameAirLine</option>
+                                        <option value="VietJet">VietJet</option>
+                                        <option value="BambooAirways">BambooAirways</option>
                                     </select>
                                     <div class="invalid-feedback">
                                         Vui lòng chọn hãng máy bay
                                     </div>
                                 </div>            
                                 <div class="col-1 form-group">
-                                    <label for="numbersit">Số ghế</label>
-                                    <input type="number" id="numbersit" class="numbersit form-control" min="50" max="200" required>
+                                    <label for="soghe">Số ghế</label>
+                                    <input type="number" name="soghe" class="numbersit form-control" min="50" max="200" required>
                                     <div class="invalid-feedback">
                                         Vui lòng chọn số ghế
                                     </div>
                                 </div>
                                 <div class="col-1">
-                                    <button class="btn btn-primary btnsubmitInputplane" type="submit">Thêm</button>
+                                    <button value="insert" name="command" class="btn btn-primary btnsubmitInputplane" type="submit">Thêm</button>
                                 </div>    
                         </div>
                     </form> 
@@ -101,65 +104,62 @@
                             <div class="col-12">
                                 <table class="tableDetail">
                                     <tr>
-                                        <th><input type="checkbox"></th>
+                                        
                                         <th>Mã máy bay</th>
                                         <th>Tên máy bay</th>
                                         <th>Hãng máy bay</th>
                                         <th>Số ghế</th>
                                         <th>Số ghế trống</th>
                                         <th>Tình trạng</th>
-                                        <th><i class="fas fa-cog"></i></th>
+                                        <th>Thao tác</th>
                                     </tr>
+                                    <%
+                                            
+                                            for(Plane p : list){
+                                        %>
                                     <tr>
-                                        <form action="#" method="POST">
-                                            <td><input type="checkbox" name="" id=""></td>
-                                        <td>MB001</td>
+                                       
+                                           
+                                        <td><%=p.getMamb()%></td>
                                         <td>
-                                            <div class="inforRow">VN2000</div>
-                                            <select name=namePlane id="namePlane" class="namePlane custom-select selectOptionRow inputrow" >
-                                                <option value="VN2000" selected>VN2000</option>
-                                            </select>
+                                             <%=p.getTenmb()%>
                                         </td>
                                         <td>
-                                            <div class="inforRow">VN2000</div>
-                                            <select name="airline" id="airline" class="airline custom-select selectOptionRow inputrow" >
-                                                <option value="Viet Nam Airline" selected>Viet Nam Airline</option>
-                                            </select>
+                                           <%=p.getHangmb()%>
                                         </td>
                                         <td>
-                                            <div class="inforRow">100</div>
-                                            <input type="number" id="numbersit" class="numbersit form-control inputrow" min="50" max="200" value="100">
+                                             <%=p.getSoghe()%>
                                         </td>
                                         <td>
-                                            <div class="inforRow">50</div>
-                                            <input type="number" id="numberempty" class="numberempty form-control inputrow" min="50" max="200" value="50">
+                                           <%=p.getSoghetrong()%>
                                         </td>
-                                        <td>
-                                            <div class="inforRow">Đang hoạt động</div>
-                                            <select name="state" id="state" class="state custom-select selectOptionRow inputrow" >
-                                                <option value="Đang hoạt động" selected>Đang hoạt động</option>
-                                            </select>
-                                        </td>
-                                        <td>
-                                           <div class="btnSubmitSave" id="btnSubmitSave">
-                                                    <button type="submit" class="btnSave btn btn-primary" id="btnSave">Lưu</button>
-                                                </div>
-                                                </form>
-                                                <div class="dropdown dropdownMenuRowTable">
-                                                    <div class="dropdown-toggle" id="dropdownManageDetailTicket" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                        <i class="fas fa-cog"></i>
-                                                    </div>
-                                                    <div class="dropdown-menu menuConfig" aria-labelledby="dropdownManageDetailTicket">
-                                                                                             
-                                                    <button class="dropdown-item btnEdit" type="button">Sửa</button>
-                                                    <form action="#" method="POST">
-                                                        <button class="dropdown-item" type="submit" onclick="return confirm('Bạn chắc chắn muốn xóa máy bay này!')">Xóa</button>
-                                                    </form>
-                                                </div>
-                                    
-                                            </td>
                                         
+                                            <% if(p.getTinhtrang() == 1){ %>
+                                                <td>
+                                                Đang hoạt động
+                                                </td>
+                                             <%} else {%>
+                                             <td>
+                                                Dừng hoạt động
+                                             </td>
+                                             <%}%>
+                                            
+                                                
+                                            
+                                            
+                                        <td style="border: 2px solid #dcdcdc;vertical-align: top;" >
+                                                <center>
+                                                    <a style="color: #ff66cc;font-weight:  bold;" href="/QUANLYBANVEMAYBAY/admin/updatePlane.jsp?mamb=<%=p.getMamb()%>&command=update">
+                                                        Sửa
+                                                    </a>&nbsp;| &nbsp;
+                                                    <a style="color: #ff66cc;font-weight:  bold;" onclick="return confirm('Bạn chắc chắn muốn xóa thông tin này!')" href="/QUANLYBANVEMAYBAY/ManagePlaneServlet?mamb=<%=p.getMamb()%>&command=delete">
+                                                        Xóa
+                                                    </a>
+                                                </center>
+                                        </td>
+
                                     </tr>
+                                    <%}%>
                                 </table>
                             </div>
                         </div>

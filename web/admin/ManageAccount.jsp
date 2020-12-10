@@ -38,7 +38,7 @@
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                           <li class="breadcrumb-item" aria-current="page"><a href="index.jsp"><i class="fas fa-home"></i> Trang chủ</a></li>
-                          <li class="breadcrumb-item" aria-current="page"><a href="#">Quản lý khách hàng</a></li>
+                          <li class="breadcrumb-item" aria-current="page"><a href="ManageCustomer.jsp">Quản lý khách hàng</a></li>
                           <li class="breadcrumb-item active" aria-current="page">Quản lý tài khoản</li>
                         </ol>
                     </nav>
@@ -49,15 +49,15 @@
                         <div class="row">
                             <div class="col-12">
                                 <div class="searchCustomer">
-                                    <form action="#" method="Post">
-                                        <a href="#" class="btn btn-success" id="btnInsert"><i class="fas fa-plus-circle"></i> Thêm mới</a>
-                                        <input type="text" placeholder="Tìm khách hàng" name="inforCustomer" class="inforCustomerAccount">
+                                    <form action="/QUANLYBANVEMAYBAY/ManageAccountServlet" method="POST">
+                                        <a href="/QUANLYBANVEMAYBAY/user/signup.jsp" class="btn btn-success" id="btnInsert"><i class="fas fa-plus-circle"></i> Thêm mới</a>
+                                        <input type="text" placeholder="Tìm khách hàng" name="inforAccount" class="inforCustomerAccount">
                                         <button type="submit" class="btnSubmit btn btn-danger"><i class="fas fa-search"></i> Tìm kiếm</button>
                                     </form>
                                 </div>
                             </div>
                         </div>
-                        <form action="#" method="POST" class="formInsert needs-validation" id="formInsert" novalidate>
+<!--                        <form action="#" method="POST" class="formInsert needs-validation" id="formInsert" novalidate>
                             
                             <div class="form-row">
                                 <div class="col-12 titleForm">
@@ -82,12 +82,12 @@
                                     <p class="alert alert-primary" role="alert">Tên tài khoản sẽ được tạo tự động từ số điện thoại của khách hàng. Mật khẩu sẽ cũng được tạo tự động từ hệ thống.</p>
                                 </div>  
                         </div>
-                    </form> 
+                    </form> -->
                         <div class="row">
                             <div class="col-12">
                                 <table class="tableDetail">
                                     <tr>
-                                    <th><input type="checkbox"></th>
+                                   
                                     <th>Tên tài khoản</th>
                                     <th>Tên khách hàng</th>
                                     <th>Quyền</th>

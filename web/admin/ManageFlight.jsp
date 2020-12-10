@@ -4,6 +4,9 @@
     Author     : Pham An
 --%>
 
+<%@page import="model.Flight"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="dao.FlightDao"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!doctype html>
 <html lang="en">
@@ -27,6 +30,10 @@
     <title>Quản lý chuyến bay</title>
   </head>
   <body>
+       <%
+           FlightDao fDao = new FlightDao();
+            ArrayList<Flight> list = fDao.getListFlight();
+      %>
     <div class="swapper">
         <jsp:include page="Header.jsp"></jsp:include>
         <div class="body-content">
@@ -47,100 +54,134 @@
                         <div class="row">
                             <div class="col-12">
                                 <div class="searchFlight">
-                                    <form action="#" method="Post">
+                                    <form action="/QUANLYBANVEMAYBAY/ManageFlightServlet" method="POST">
                                         <button class="btn btn-success" id="btnInsert" type="button"><i class="fas fa-plus-circle"></i> Thêm mới</button>
                                         <input type="text" placeholder="Tìm chuyến bay" name="inputFlight" class="inputFlight">
-                                        <button type="submit" class="btnSubmit btn btn-danger"><i class="fas fa-search"></i> Tìm kiếm</button>
+                                        <button type="submit" name="command" value="search" class="btnSubmit btn btn-danger"><i class="fas fa-search"></i> Tìm kiếm</button>
                                     </form>
                                 </div>
                             </div>
                         </div>
-                        <form action="#" method="POST" class="formInsert needs-validation" id="formInsert" novalidate>
+                        <form action="/QUANLYBANVEMAYBAY/ManageFlightServlet" method="POST" class="formInsert needs-validation" id="formInsert" novalidate>
                             <div class="form-row">
                                 <div class="col-12 titleForm">
                                     <h3>Thêm chuyến bay</h3>
                                     <div class="btnclose" id="btnclose"><i class="fas fa-angle-up"></i></div>
                                 </div>
                                 <div class="col-4 form-group">
-                                  <label for="id_plane">Hãng máy bay</label>
-                                  <select name="airline" id="airline" class="airline custom-select" required>
+                                  <label for="hangmb">Hãng máy bay</label>
+                                  <select name="hangmb" class="airline custom-select" required>
                                     <option value="">Hãng máy bay</option>
-                                    <option value="VietNameAirLine">VietNameAirLine</option>
+                                    <option value="VietNamAirline">VietNamAirline</option>
+                                    <option value="Bamboo">Bamboo</option>
+                                    <option value="VietJet">VietJet</option>
                                   </select>
                                   <div class="invalid-feedback">
                                     Vui lòng chọn hãng máy bay
                                   </div>
                                 </div>
                                 <div class="col-4 form-group">
-                                    <label for="name_plane">Từ</label>
-                                    <select name="airline" id="placeFrom" class="placeFrom custom-select" required>
+                                    <label for="noidi">Từ</label>
+                                    <select name="noidi"  class="placeFrom custom-select" required>
                                         <option value="">Chọn nơi đi</option>
+                                        <option value="Hà Nội">Hà Nội</option>
+                                        <option value="Đà Nẵng">Đà Nẵng</option>
+                                        <option value="Huế">Huế</option>
+                                        <option value="Khánh Hòa">Khánh Hòa</option>
+                                         <option value="Phú Quốc">Phú Quốc</option>
                                         <option value="Hồ Chí Minh">Hồ Chí Minh</option>
+                                        <option value="Hải Phòng">Hải Phòng</option>
                                     </select>
                                     <div class="invalid-feedback">
                                         Vui lòng chọn nơi đi
                                     </div>
                                 </div>
                                 <div class="col-4 form-group">
-                                    <label for="name_plane">Đến</label>
-                                    <select name="airline" id="placeTo" class="placeTo custom-select" required>
+                                    <label for="noiden">Đến</label>
+                                    <select name="noiden"  class="placeTo custom-select" required>
                                         <option value="">Chọn nơi đến</option>
                                         <option value="Hà Nội">Hà Nội</option>
+                                        <option value="Đà Nẵng">Đà Nẵng</option>
+                                        <option value="Huế">Huế</option>
+                                        <option value="Khánh Hòa">Khánh Hòa</option>
+                                         <option value="Phú Quốc">Phú Quốc</option>
+                                        <option value="Hồ Chí Minh">Hồ Chí Minh</option>
+                                        <option value="Hải Phòng">Hải Phòng</option>
                                     </select>
                                     <div class="invalid-feedback">
                                         Vui lòng chọn nơi đến
                                     </div>
                                 </div>
                                 <div class="col-4 form-group">
-                                    <label for="name_plane">Sân bay đi</label>
-                                    <select name="airline" id="airportFrom" class="airportFrom custom-select" required>
+                                    <label for="sanbay">Sân bay đi</label>
+                                    <select name="sanbay"  class="airportFrom custom-select" required>
                                         <option value="">Chọn sân bay đi</option>
-                                        <option value="Sân bay Tân Sơn Nhất">Sân bay Tân Sơn Nhất</option>
+                                        <option value="Tân Sơn Nhất">Sân bay Tân Sơn Nhất</option>
+                                        <option value="Nội Bài">Sân bay Nội Bài</option>
+                                        <option value="Cát Bi">Sân bay Cát Bi</option>
+                                        <option value="Cam Ranh">Sân bay Cam Ranh</option>
+                                        <option value="Đà Nẵng">Sân bay Đà Nẵng</option>
+                                        <option value="Phú Quốc">Sân bay Phú Quốc</option>
+                                        <option value="Phú Bài">Sân bay Phú Bài</option>
+                                      
                                     </select>
                                     <div class="invalid-feedback">
                                         Vui lòng chọn sân bay đi
                                     </div> 
                                 </div> 
                                 <div class="col-4 form-group">
-                                    <label for="name_plane">Sân bay đến</label>
-                                    <select name="airline" id="airportTo" class="airportTo custom-select" required>
+                                    <label for="sanbaydi">Sân bay đến</label>
+                                    <select name="sanbaydi"  class="airportTo custom-select" required>
                                         <option value="">Chọn sân bay đến</option>
-                                        <option value="Sân bay Nội Bài">Sân bay Nội Bài</option>
+                                         <option value="Tân Sơn Nhất">Sân bay Tân Sơn Nhất</option>
+                                        <option value="Nội Bài">Sân bay Nội Bài</option>
+                                        <option value="Cát Bi">Sân bay Cát Bi</option>
+                                        <option value="Cam Ranh">Sân bay Cam Ranh</option>
+                                            <option value="Đà Nẵng">Sân bay Đà Nẵng</option>
+                                        <option value="Phú Quốc">Sân bay Phú Quốc</option>
+                                        <option value="Phú Bài">Sân bay Phú Bài</option>
                                     </select>
                                     <div class="invalid-feedback">
                                         Vui lòng chọn sân bay đến
                                     </div> 
                                 </div>
                                 <div class="col-4 form-group">
-                                    <label for="name_plane">Ngày bay</label>
-                                    <input type="date" class="datedepart form-control inputdate" id="datedepart" required>
+                                    <label for="ngaydi">Ngày bay</label>
+                                    <input type="date" name="ngaydi" class="datedepart form-control inputdate"  required>
                                     <div class="invalid-feedback">
                                         Vui lòng chọn ngày bay
                                     </div> 
                                 </div>
-                                <div class="col-4 form-group">
-                                    <label for="name_plane">Giờ bay</label>
-                                    <input type="time" name="hourdepart" id="hourdepart" class=" hourdepart form-control" required>
+                                 <div class="col-4 form-group">
+                                    <label for="giobay">Giờ bay</label>
+                                    <input type="text" name="giobay"  class="hourdepart form-control" required>
+                                    <div class="invalid-feedback">
+                                        Vui lòng chọn giờ bay
+                                    </div>
+                                </div>
+<!--                                <div class="col-4 form-group">
+                                    <label for="giobay">Giờ bay</label>
+                                    <input type="time" name="giobay" id="hourdepart" class=" hourdepart form-control" required>
                                     <div class="invalid-feedback">
                                         Vui lòng chọn giờ bay
                                     </div>
                                 </div>
                                 <div class="col-4 form-group">
-                                    <label for="name_plane">Giờ hạ cánh</label>
-                                    <input type="time" name="hourend" id="hourend" class=" hourend form-control" required>
+                                    <label for="giohacanh">Giờ hạ cánh</label>
+                                    <input type="time" name="giohacanh" id="hourend" class=" hourend form-control" required>
                                     <div class="invalid-feedback">
                                         Vui lòng chọn giờ hạ cánh
                                     </div>
-                                </div>
+                                </div>-->
                                 <div class="col-4 form-group">
-                                    <label for="name_plane">Giá(VNĐ)</label>
-                                    <input type="text" name="price" id="price" class="price form-control" required>
+                                    <label for="gia">Giá(VNĐ)</label>
+                                    <input type="text" name="gia"  class="price form-control" required>
                                     <div class="invalid-feedback">
                                         Vui lòng nhập giá
                                     </div>
                                 </div>          
                                 <div class="col-1">
-                                    <button class="btn btn-primary btnsubmitInputplane" type="submit">Thêm</button>
+                                    <button type="submit"  name="command" value="insert"  class="btn btn-primary btnsubmitInputplane" >Thêm</button>
                                 </div>    
                         </div>
                     </form> 
@@ -148,84 +189,66 @@
                             <div class="col-12">
                                 <table class="tableDetail">
                                     <tr>
-                                        <th><input type="checkbox"></th>
-                                        <th>Mã chuyến bay</th>
-                                        <th>Hãng máy bay</th>
-                                        <th>Sân bay đi</th>
-                                        <th>Sân bay đến</th>
+                                        
+                                        <th>Mã CB</th>
+                                        <th>Mã MB</th>
+                                        <th>Mã SB</th>
                                         <th>Từ</th>
                                         <th>Đến</th>
-                                        <th>Ngày bay</th>
-                                        <th>Giờ cất cánh</th>
-                                        <th>Giờ hạ cánh</th>
-                                        <th><i class="fas fa-cog"></i></th>
-                                        </tr>
+                                        <th>Ngày đi</th>
+                                        <th>Ngày đến</th>
+                                        <th>Thời gian bay</th>
+                                        <th>Giá</th>
+                                        <th>Mã khuyến mãi</th>
+                                        <th>Thao tác</th>
+                                    </tr>
                                     <tr>
-                                        <form action="#" method="POST">
-                                            <td><input type="checkbox" name="" id=""></td>
-                                        <td>CB001</td>
+                                        <%
+                                            
+                                            for(Flight c : list){
+                                        %>
+                                        
+                                        <td><%=c.getMacb()%></td>
                                         <td>
-                                            <div class="inforRow">Viet Nam Airline</div>
-                                            <select name="airline" id="airline" class="airline custom-select selectOptionRow inputrow" >
-                                                <option value="Viet Nam Airline" selected>Viet Nam Airline</option>
-                                            </select>
+                                            <%=c.getMamb()%>
                                         </td>
                                         <td>
-                                            <div class="inforRow">Tân Sơn Nhất</div>
-                                            <select name="airport" id="airport" class="airport custom-select selectOptionRow inputrow" >
-                                                <option value="Tân Sơn Nhất" selected>Tân Sơn Nhất</option>
-                                            </select>
+                                            <%=c.getMasb()%>
                                         </td>
                                         <td>
-                                            <div class="inforRow">Đà Nẵng</div>
-                                            <select name="airport" id="airport" class="airport custom-select selectOptionRow inputrow" >
-                                                <option value="Đà Nẵng" selected>Đà Nẵng</option>
-                                            </select>
+                                            <%=c.getDiemdi()%>
                                         </td>
                                         <td>
-                                            <div class="inforRow">Hồ Chí Minh</div>
-                                            <select name="placeFrom" id="placeFrom" class="placeFrom custom-select selectOptionRow inputrow" >
-                                                <option value="Hồ Chí Minh" selected>Hồ Chí Minh</option>
-                                            </select>
+                                            <%=c.getDiemden()%>
                                         </td>
                                         <td>
-                                            <div class="inforRow">Đà Nẵng</div>
-                                            <select name="placeTo" id="placeTo" class="placeTo custom-select selectOptionRow inputrow" >
-                                                <option value="Đà Nẵng" selected>Đà Nẵng</option>
-                                            </select>
+                                            <%=c.getThoigiandi()%>
                                         </td>
                                         <td>
-                                            <div class="inforRow">01/10/2020</div>
-                                            <input type="date" name="datedeport" class="datedeport inputrow form-control" value="2020-10-01" >
+                                            <%=c.getThoigianden()%>
+                                        </td>
+                                        <td><%=c.getKhoangthoigian()%></td>
+                                        <td>
+                                            <%=c.getGia()%>
                                         </td>
                                         <td>
-                                            <div class="inforRow">9:00</div>
-                                            <input type="time" name="timedeport" class="timedeport inputrow form-control" value="09:00" >
+                                            <%=c.getMakm()%>
                                         </td>
-                                        <td>
-                                            <div class="inforRow">11:00</div>
-                                            <input type="time" name="timedeport" class="timedeport inputrow form-control" value="11:00" >
+                                        <td style="border: 2px solid #dcdcdc;vertical-align: top;">
+                                                <center>
+                                                    <a style="color: #ff66cc;font-weight:  bold;" href="/QUANLYBANVEMAYBAY/admin/updateFlight.jsp?macb=<%=c.getMacb()%>&command=update">
+                                                        Sửa
+                                                    </a>&nbsp;| &nbsp;
+                                                    <a style="color: #ff66cc;font-weight:  bold;"  onclick="return confirm('Bạn chắc chắn muốn xóa thông tin này!')" href="/QUANLYBANVEMAYBAY/ManageFlightServlet?macb=<%=c.getMacb()%>&command=delete">
+                                                        Xóa
+                                                    </a>
+                                                </center>
                                         </td>
-                                        <td>
-                                            <div class="btnSubmitSave" id="btnSubmitSave">
-                                                    <button type="submit" class="btnSave btn btn-primary" id="btnSave">Lưu</button>
-                                                </div>
-                                                </form>
-                                                <div class="dropdown dropdownMenuRowTable">
-                                                    <div class="dropdown-toggle" id="dropdownManageDetailTicket" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                        <i class="fas fa-cog"></i>
-                                                    </div>
-                                                    <div class="dropdown-menu menuConfig" aria-labelledby="dropdownManageDetailTicket">
-                                                                                             
-                                                    <button class="dropdown-item btnEdit" type="button">Sửa</button>
-                                                    <form action="#" method="POST">
-                                                        <button class="dropdown-item" type="submit" onclick="return confirm('Bạn chắc chắn muốn xóa chuyến bay này!')">Xóa</button>
-                                                    </form>
-                                                </div>
-                                    
-                                            </td>
                                         
                                     </tr>
+                                     <%        
+                                        }
+                                    %>
                                 </table>
                             </div>
                         </div>

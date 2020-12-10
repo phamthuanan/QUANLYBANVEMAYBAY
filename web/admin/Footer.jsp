@@ -8,13 +8,9 @@
 <!DOCTYPE html>
 <html>
     <body>
-        <footer>
-            <div class="pull-right hidden-xs">
-                <i class="fab fa-facebook"></i>
-                <i class="fab fa-twitter"></i>
-                <i class="far fa-envelope"></i>
-            </div>
-              <strong>Copyright &copy; <span>The Wing</span>.</strong>
+        <footer style="height: 60px;width: 307px">
+           
+         <span></span>
         </footer>
     </body>
 </html>

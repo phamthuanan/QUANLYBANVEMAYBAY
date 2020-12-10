@@ -5,10 +5,29 @@
  */
 package util;
 
+//import java.sql.Connection;
+//import java.sql.DriverManager;
+import java.sql.*;
+
 /**
  *
- * @author Pham An
+ * @author TRAN TIEN ANH
  */
 public class DBConnect {
-    
+     public static Connection getConnection() {
+        Connection cons = null;
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            cons = DriverManager.getConnection("jdbc:mysql://localhost:3306/quanlybanvemaybay?useUnicode=yes&characterEncoding=UTF-8", "root", "");
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Can't connect to database !");
+        }
+        return cons;
+    }
+ 
+    public static void main(String[] args) {
+        System.out.println(getConnection());
+    }
+
 }

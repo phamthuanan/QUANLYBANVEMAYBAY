@@ -4,6 +4,12 @@
     Author     : Pham An
 --%>
 
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.time.LocalDateTime"%>
+<%@page import="java.util.Date"%>
+<%@page import="model.Promotion"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="dao.PromotionDao"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!doctype html>
 <html lang="en">
@@ -27,6 +33,10 @@
     <title>Quản lý khuyến mãi</title>
   </head>
   <body>
+       <%
+           PromotionDao pDao = new PromotionDao();
+            ArrayList<Promotion> list = pDao.getListPromotion();
+      %>
     <div class="swapper">
         <jsp:include page="Header.jsp"></jsp:include>
         <div class="body-content">
@@ -47,57 +57,51 @@
                         <div class="row">
                             <div class="col-12">
                                 <div class="searchPromotion">
-                                    <form action="#" method="Post">
+                                    <form action="/QUANLYBANVEMAYBAY/ManagePromotionServlet" method="Post">
                                         <button class="btn btn-success" id="btnInsert" type="button"><i class="fas fa-plus-circle"></i> Thêm mới</button>
-                                        <input type="text" placeholder="Tìm hãng máy bay" name="inputPromotion" class="inputPromotion">
+                                        <input type="text" placeholder="Tìm mã khuyến mãi" name="inputPromotion" class="inputPromotion">
                                         <button type="submit" class="btnSubmit btn btn-danger"><i class="fas fa-search"></i> Tìm kiếm</button>
                                     </form>
                                 </div>
                             </div>
                         </div>
-                        <form action="#" method="POST" class="formInsert needs-validation" id="formInsert" novalidate>
+                        <form action="/QUANLYBANVEMAYBAY/ManagePromotionServlet" method="POST" class="formInsert needs-validation" id="formInsert" novalidate>
                             <div class="form-row">
                                 <div class="col-12 titleForm">
                                     <h3>Thêm thông tin khuyến mãi</h3>
                                     <div class="btnclose" id="btnclose"><i class="fas fa-angle-up"></i></div>
                                 </div>
                                 <div class="col-5 form-group">
-                                  <label for="id_promotion">Tên khuyến mãi</label>
-                                    <input type="text" id="id_promotion" class="idPromotion form-control " placeholder="Nhập tên khuyến mãi" required>
+                                  <label for="temkm">Tên khuyến mãi</label>
+                                    <input type="text" name="temkm" class="idPromotion form-control " placeholder="Nhập tên khuyến mãi" required>
                                     <div class="invalid-feedback">
                                         Vui lòng nhập tên khuyến mãi
                                     </div>
                                 </div>
                                 <div class="col-3 form-group">
-                                    <label for="dateStart">Ngày bắt đầu</label>
-                                    <input type="date" id="dateStart" class="dateStart form-control inputdate" required>
+                                    <label for="ngaybd">Ngày bắt đầu</label>
+                                    <input type="date" name="ngaybd" class="dateStart form-control inputdate" required>
                                     
                                     <div class="invalid-feedback">
                                         Vui lòng chọn ngày bắt đầu
                                     </div>
                                 </div>
                                 <div class="col-3 form-group">
-                                    <label for="dateFinish">Ngày kết thúc</label>
-                                    <input type="date" id="dateFinish" class="dateFinish form-control inputdate" required>
+                                    <label for="ngaykt">Ngày kết thúc</label>
+                                    <input type="date" name="ngaykt" class="dateFinish form-control inputdate" required>
                                     <div class="invalid-feedback">
                                         Vui lòng chọn ngày kết thúc
                                     </div>
                                 </div>
                                 <div class="col-1 form-group">
-                                    <label for="discount">Giảm giá</label>
-                                    <input type="number" id="discount" class="discount form-control" min="1" max="100" required>
+                                    <label for="phantramkm">Giảm giá</label>
+                                    <input type="number" name="phantramkm" class="discount form-control" min="1" max="100" required>
                                     <div class="invalid-feedback">
-                                        Vui lòng nhọn phần trăm giảm giá
+                                        Vui lòng chọn phần trăm giảm giá
                                     </div>
                                 </div>           
-                                <div class="col-12">
-                                    <label for="descriptions">Mô tả khuyến mãi</label>
-                                    <textarea name="descriptions" id="descriptions" class ="descriptions form-control" cols="30" rows="3" required></textarea>
-                                    <div class="invalid-feedback">
-                                        Vui lòng nhập thông tin mô tả
-                                    </div> 
-                                </div>
-                                <div class="col-1"><button class="btn btn-primary btnsubmitInsertPromoiton" type="submit">Thêm</button></div>
+                                
+                                <div class="col-1"><button value="insert" name="command" class="btn btn-primary btnsubmitInsertPromoiton" type="submit">Thêm</button></div>
                         </div>
                         
                     </form> 
@@ -105,56 +109,68 @@
                             <div class="col-12">
                                 <table class="tableDetail">
                                     <tr>
-                                        <th><input type="checkbox"></th>
+                                        
                                         <th>Mã khuyến mãi</th>
                                         <th>Tên khuyến mãi</th>
                                         <th>Giảm giá</th>
                                         <th>Ngày bắt đầu</th>
                                         <th>Ngày kết thúc</th>
                                         <th>Tình trạng</th>
-                                        <th><i class="fas fa-cog"></i></th>
+                                        <th>Thao tác</th>
                                     </tr>
+                                     <%
+                                            
+                                            for(Promotion p : list){
+                                        %>
                                     <tr>
-                                        <form action="#" method="POST">
-                                            <td><input type="checkbox" name="" id=""></td>
-                                        <td>KH001</td>
+<!--                                        <form action="#" method="POST">
+                                            <td><input type="checkbox" name="" id=""></td>-->
+                                        <td><%=p.getMakm()%></td>
                                         <td>
-                                            <div class="inforRow">Khách háng VIP</div>
-                                            <input type="text" value="Khách hàng VIP" id="inputrow" class="inputrow form-control" name="namePromotion">
+                                            <%=p.getTenkm()%>
+<!--                                            <div class="inforRow">Khách háng VIP</div>
+                                            <input type="text" value="Khách hàng VIP" id="inputrow" class="inputrow form-control" name="namePromotion">-->
                                         </td>
                                         <td>
-                                            <div class="inforRow">30%</div>
-                                            <input type="number" value="30" id="inputrow" class="inputrow form-control" name="discount" min="1" max="100">
+                                            <%=p.getPhantramkm()%>
+<!--                                            <div class="inforRow">30%</div>
+                                            <input type="number" value="30" id="inputrow" class="inputrow form-control" name="discount" min="1" max="100">-->
                                         </td>
                                         <td>
-                                            <div class="inforRow">01/10/2020</div>
-                                            <input type="date" name="dateStart" class="dateStart inputrow form-control" value="2020-10-01" >
+                                            <%=p.getNgaybd()%>
+<!--                                            <div class="inforRow">01/10/2020</div>
+                                            <input type="date" name="dateStart" class="dateStart inputrow form-control" value="2020-10-01" >-->
                                         </td>
                                         <td>
-                                            <div class="inforRow">30/10/2020</div>
-                                            <input type="date" name="dateFinish" class="dateFinish inputrow form-control" value="2020-10-30" >
+                                            <%=p.getNgaykt()%>
+<!--                                            <div class="inforRow">30/10/2020</div>
+                                            <input type="date" name="dateFinish" class="dateFinish inputrow form-control" value="2020-10-30" >-->
                                         </td>
+                                        <% 
+                                            SimpleDateFormat formatter= new SimpleDateFormat("MM/dd/yyyy");
+                                            Date date = new Date(System.currentTimeMillis());
+                                           
+                                            if(p.getNgaykt().compareTo(date) < 0){
+                                                
+                                                    
+                                        %>
+                                        <td>Hết hạn</td>
+                                        <% }else{ %>
                                         <td>Còn hạn</td>
-                                        <td>
-                                            <div class="btnSubmitSave" id="btnSubmitSave">
-                                                    <button type="submit" class="btnSave btn btn-primary" id="btnSave">Lưu</button>
-                                                </div>
-                                                </form>
-                                                <div class="dropdown dropdownMenuRowTable">
-                                                    <div class="dropdown-toggle" id="dropdownManageDetailTicket" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                        <i class="fas fa-cog"></i>
-                                                    </div>
-                                                    <div class="dropdown-menu menuConfig" aria-labelledby="dropdownManageDetailTicket">
-                                                                                             
-                                                    <button class="dropdown-item btnEdit" type="button">Sửa</button>
-                                                    <form action="#" method="POST">
-                                                        <button class="dropdown-item" type="submit" onclick="return confirm('Bạn chắc chắn muốn xóa phiếu khuyến mãi này!')">Xóa</button>
-                                                    </form>
-                                                </div>
-                                    
-                                            </td>
+                                        <%}%>
+                                         <td style="border: 2px solid #dcdcdc;vertical-align: top;" >
+                                                <center>
+                                                    <a style="color: #ff66cc;font-weight:  bold;" href="/QUANLYBANVEMAYBAY/admin/updatePromotion.jsp?mamb=<%=p.getMakm()%>&command=update">
+                                                        Sửa
+                                                    </a>&nbsp;| &nbsp;
+                                                    <a style="color: #ff66cc;font-weight:  bold;" onclick="return confirm('Bạn chắc chắn muốn xóa thông tin này!')" href="/QUANLYBANVEMAYBAY/ManagePromotionServlet?makm=<%=p.getMakm()%>&command=delete">
+                                                        Xóa
+                                                    </a>
+                                                </center>
+                                        </td>
                                         
                                     </tr>
+                                    <%}%>
                                 </table>
                             </div>
                         </div>
