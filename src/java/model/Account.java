@@ -10,13 +10,17 @@ package model;
  * @author TRAN TIEN ANH
  */
 public class Account {
-    private String username ;
+
+    private String username;
     private String password;
     private int quyen;
 
     public Account() {
+        username = null;
+        password = null;
+        quyen = 0;
     }
-    
+
     public Account(String username, String password, int quyen) {
         this.username = username;
         this.password = password;
@@ -46,6 +50,5 @@ public class Account {
     public void setQuyen(int quyen) {
         this.quyen = quyen;
     }
-    
-    
+
 }

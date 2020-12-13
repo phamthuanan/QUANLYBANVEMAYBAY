@@ -1,30 +1,30 @@
-package Model;
+package dao;
 
 import Connection.ConnectionDB;
-import Table.KhachHang;
-import Table.TaiKhoan;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+import model.Account;
+import model.Customer;
 
-public class ModelTaiKhoan {
+public class ModelAccount {
 
     private static Connection con = ConnectionDB.getConnection();
 
-    public static List<TaiKhoan> getTaiKhoans() {
-        List<TaiKhoan> list = new ArrayList<>();
+    public static List<Account> getAccounts() {
+        List<Account> list = new ArrayList<>();
         String sql = "select * from taikhoan";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                TaiKhoan user = new TaiKhoan();
+                Account user = new Account();
                 user.setUsername(rs.getString("username"));
                 user.setPassword(rs.getString("password"));
-                user.setQuyen(rs.getBoolean("quyen"));
+                user.setQuyen(rs.getInt("quyen"));
                 list.add(user);
             }
             ps.close();
@@ -36,8 +36,8 @@ public class ModelTaiKhoan {
     }
 
     public static boolean doesUsernameExist(String username) {
-        List<TaiKhoan> list = getTaiKhoans();
-        for (TaiKhoan user : list) {
+        List<Account> list = getAccounts();
+        for (Account user : list) {
             if (user.getUsername() == username) {
                 return true;
             }
@@ -50,8 +50,8 @@ public class ModelTaiKhoan {
             return false;
         }
 
-        TaiKhoan user = new TaiKhoan(username, password, false);
-        KhachHang kh = new KhachHang(0, hoTen, email, diaChi, sdt, "đồng", 0, user);
+        Account user = new Account(username, password, 0);
+        Customer kh = new Customer(0, hoTen, email, diaChi, sdt, "đồng", username, 0);
         int rowUser = 0;
         int rowKH = 0;
         String sql1 = "insert into taikhoan values(?,?,?)";
@@ -60,18 +60,18 @@ public class ModelTaiKhoan {
             PreparedStatement ps1 = con.prepareStatement(sql1);
             ps1.setString(1, user.getUsername());
             ps1.setString(2, user.getPassword());
-            ps1.setBoolean(3, user.isQuyen());
+            ps1.setInt(3, user.getQuyen());
             rowUser = ps1.executeUpdate();
             ps1.close();
 
             PreparedStatement ps2 = con.prepareStatement(sql2);
-            ps2.setString(1, kh.getHoTen());
+            ps2.setString(1, kh.getHoten());
             ps2.setString(2, kh.getEmail());
-            ps2.setString(3, kh.getDiaChi());
+            ps2.setString(3, kh.getDiachi());
             ps2.setString(4, kh.getSdt());
-            ps2.setString(5, kh.getLoaiKH());
+            ps2.setString(5, kh.getLoaikh());
             ps2.setInt(6, kh.getDiem());
-            ps2.setString(7, kh.getUser().getUsername());
+            ps2.setString(7, kh.getUsername());
             rowKH = ps2.executeUpdate();
             ps2.close();
         } catch (Exception e) {

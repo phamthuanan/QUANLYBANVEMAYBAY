@@ -10,6 +10,7 @@ package model;
  * @author TRAN TIEN ANH
  */
 public class Customer {
+
     private int makh;
     private String hoten;
     private String email;
@@ -20,6 +21,14 @@ public class Customer {
     private int diem;
 
     public Customer() {
+        makh = 0;
+        hoten = null;
+        email = null;
+        diachi = null;
+        sdt = null;
+        loaikh = "đồng";
+        diem = 0;
+        username = null;
     }
 
     public Customer(int makh, String hoten, String email, String diachi, String sdt, String loaikh, String username, int diem) {
@@ -96,6 +105,5 @@ public class Customer {
     public void setDiem(int diem) {
         this.diem = diem;
     }
-    
-    
+
 }
