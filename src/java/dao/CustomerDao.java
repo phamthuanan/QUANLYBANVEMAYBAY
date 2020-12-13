@@ -14,7 +14,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.Account;
 import model.Customer;
-import util.DBConnect;
+import Connection.DBConnect;
 
 /**
  *

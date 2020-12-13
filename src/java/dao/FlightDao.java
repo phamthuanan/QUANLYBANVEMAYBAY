@@ -14,7 +14,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.Flight;
 import model.Flight;
-import util.DBConnect;
+import Connection.DBConnect;
 
 /**
  *

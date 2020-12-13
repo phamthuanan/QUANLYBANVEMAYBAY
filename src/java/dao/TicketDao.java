@@ -18,7 +18,7 @@ import model.Ticket;
 import model.Flight;
 import model.Plane;
 import model.Customer;
-import util.DBConnect;
+import Connection.DBConnect;
 
 /**
  *

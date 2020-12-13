@@ -12,7 +12,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import model.Flight;
 import model.Statistical;
-import util.DBConnect;
+import Connection.DBConnect;
 
 /**
  *
