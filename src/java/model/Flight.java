@@ -12,6 +12,7 @@ import java.util.Date;
  * @author TRAN TIEN ANH
  */
 public class Flight {
+
     private int macb;
     private int mamb;
     private int masb;
@@ -118,6 +119,5 @@ public class Flight {
     public void setMakm(int makm) {
         this.makm = makm;
     }
-    
-    
+
 }
