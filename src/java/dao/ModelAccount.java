@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import model.Account;
 import model.Customer;
+import model.History;
 
 public class ModelAccount {
 
@@ -109,5 +110,68 @@ public class ModelAccount {
             e.printStackTrace();
         }
         return 2;
+    }
+
+    public static boolean checkPassword(String username, String pass) {
+        List<Account> list = getAccounts();
+        for (Account user : list) {
+            if (user.getUsername() == username) {
+                if (user.getPassword() == pass) {
+                    return true;
+                }
+                break;
+            }
+        }
+        return false;
+    }
+
+    // Quên mật khẩu
+    public static boolean forgetPassword(String username, String oldPass, String newPass) {
+        if (!checkPassword(username, oldPass)) {
+            return false;
+        }
+
+        int row = 0;
+        String sql = "update taikhoan set password = ? where username = ?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, newPass);
+            ps.setString(2, username);
+            row = ps.executeUpdate();
+            ps.close();
+        } catch (Exception ex) {
+            System.out.println("Lỗi update sách!");
+            ex.printStackTrace();
+        }
+        return row == 1;
+    }
+
+    // Xem lịch sử
+    public static List<History> getHistories(String username) {
+        List<History> list = new ArrayList<>();
+        History cb = null;
+        String sql = "select macb, tensb, hangmb, diemdi, diemden, thoigiandi, thoigianden, giave from taikhoan tk, khachhang kh, hoadon hd, ve, chuyenbay cb, sanbay sb, maybay mb where tk.username=kh.username and kh.makh=hd.makh and hd.mahd=ve.mahd and ve.macb=cb.macb and cb.masb=sb.masb and cb.mamb=mb.mamb and tk.username=" + username;
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                cb = new History();
+                cb.setMacb(rs.getInt("macb"));
+                cb.setTensb(rs.getString("tensb"));
+                cb.setHangmb(rs.getString("hangmb"));
+                cb.setDiemdi(rs.getString("diemdi"));
+                cb.setDiemden(rs.getString("diemden"));
+                cb.setThoigiandi(rs.getDate("thoigiandi"));
+                cb.setThoigianden(rs.getDate("thoigianden"));
+                cb.setGiave(rs.getDouble("giave"));
+
+                list.add(cb);
+            }
+            ps.close();
+        } catch (Exception e) {
+            System.out.println("Loi lay lich su tai khoan!");
+            e.printStackTrace();
+        }
+        return list;
     }
 }
