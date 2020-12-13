@@ -10,6 +10,7 @@ package model;
  * @author TRAN TIEN ANH
  */
 public class Ticket {
+
     private int mave;
     private int mahd;
     private int macb;
@@ -66,6 +67,5 @@ public class Ticket {
     public void setGiave(double giave) {
         this.giave = giave;
     }
-    
-    
+
 }
